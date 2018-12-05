@@ -1,10 +1,8 @@
-# translation_management_software
-
-Tongue
+# Tongue
 
 A translation management software.
 
-Interview of a translator
+## Interview of a translator
 
 Il y a plusieurs intervenants possibles : le dev, le responsable produit, le content manager / wording manager pour tes langues principales, le traducteur, le reviewer de la traduction… Chacun va avoir des exigences différentes.
 
@@ -16,19 +14,19 @@ Ah, et la recherche. Ça c’est important. La recherche dans Localeapp était n
 
 Aussi pouvoir donner du contexte, très important (les “notes” de clefs, qui étaient pour nous indiquées dans le Corse de Colombie).
 
-Design
+## Design features
 
-features :
+- login
+- project creation
+- yaml downloading
+- search (keys / fields)
+- conflict management
 
-login
-project creation
-yaml downloading
-search (keys / fields)
-conflict management
-Architecture
+## Architecture
 
-2 database tables :
+2 database tables:
 
-translations (key / language / value) -> index spread on 2 columns -> key/language
-word_indexs (word / keys) sorted by words length
-techno : CockroachDB
+- translations (key / language / value): index spread on 2 columns -> key/language.
+- word_search (word / keys): inverted index over translation value words. Sorted by words length to first look up the rarest words.
+
+techno: CockroachDB
