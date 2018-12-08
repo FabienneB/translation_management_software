@@ -1,25 +1,30 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
+# CREATE USER IF NOT EXISTS tongue;
+# CREATE DATABASE tongue;
+# CREATE DATABASE tonguetest;
+# GRANT ALL ON DATABASE tongue TO tongue;
+# GRANT ALL ON DATABASE tonguetest TO tongue;
+
 default: &default
-  adapter: sqlite3
+  adapter: cockroachdb
+  port: 26257
+  host: localhost
+  user: tongue
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: tongue
+  sslmode: disable
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: tonguetest
+  sslmode: disable
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: tongueprod
