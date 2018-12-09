@@ -2,6 +2,20 @@
 
 A translation management software.
 
+## Setup
+
+Database process:
+
+```bash
+cockroach start --insecure --listen-addr=localhost
+```
+
+HTTP server process:
+
+```bash
+rails server
+```
+
 ## Interview of a translator
 
 Il y a plusieurs intervenants possibles : le dev, le responsable produit, le content manager / wording manager pour tes langues principales, le traducteur, le reviewer de la traduction… Chacun va avoir des exigences différentes.
