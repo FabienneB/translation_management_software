@@ -1,0 +1,23 @@
+<h1>Tongue.app</h1>
+<form action='javascript:void 0' onsubmit='createTranslation(event)'>
+  <input name=key>
+  <input name=language>
+  <input name=value>
+  <button>Save translation</button>
+</form>
+<script>
+const createTranslation = event => {
+  let form = event.target;
+  fetch('/v1/translations', {
+    method: 'POST',
+    headers: new Headers({ "Content-Type": "application/json" }),
+    body: JSON.stringify({
+      key: form.key.value,
+      language: form.language.value,
+      value: form.value.value,
+    }),
+  })
+  .then(res => console.log(res))
+  .catch(res => console.log(res))
+}
+</script>
