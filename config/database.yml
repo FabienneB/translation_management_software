@@ -1,9 +1,3 @@
-# CREATE USER IF NOT EXISTS tongue;
-# CREATE DATABASE tongue;
-# CREATE DATABASE tonguetest;
-# GRANT ALL ON DATABASE tongue TO tongue;
-# GRANT ALL ON DATABASE tonguetest TO tongue;
-
 default: &default
   adapter: cockroachdb
   port: 26257

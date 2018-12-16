@@ -16,13 +16,12 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/.pid-*
+/.setup
 
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
-
-/node_modules
-/yarn-error.log
 
 /public/assets
 .byebug_history
@@ -30,22 +29,20 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-.DS_Store
-
 cockroach-data/
 node2/
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /front/node_modules
-/.pnp
+/front/.pnp
 .pnp.js
 
 # testing
-/coverage
+/front/coverage
 
 # production
-/build
+/front/build
 
 # misc
 .DS_Store
