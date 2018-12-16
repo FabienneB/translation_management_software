@@ -1,33 +1,27 @@
 import React from 'react';
+import axios from 'axios';
 
 class Form extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {value: ''};
+      this.state = {key: '', language: '', value: ''};
 
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
-      this.setState({value: event.target.value});
+      this.setState({[event.target.name]: event.target.value});
     }
 
     handleSubmit(event) {
       alert('A translation was submitted: ' + this.state.value);
-      fetch('http://localhost:3001/v1/translations', {
-        method: 'POST',
-        headers: {
-          'Access-Control-Request-Method': '*',
-          'Access-Control-Allow-Origin': '*',
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          key: this.state.key,
-          language: this.state.language,
-          value: this.state.translation,
-        })
+      const params = { translation: { key: this.state.key, language: this.state.language, value: this.state.value }};
+      const headers = {'Content-Type': 'application/json', 'Accept': 'application/json'};
+      axios.post('http://localhost:3001/v1/translations', params, headers).then(response => {
+      }).catch((error) => {
+          console.log(error);
+          alert(error);
       });
       event.preventDefault();
     }
@@ -45,7 +39,7 @@ class Form extends React.Component {
           </label>
           <label>
             Translation:
-            <input type="text" name="translation" value={this.state.translation} onChange={this.handleChange} />
+            <input type="text" name="value" value={this.state.value} onChange={this.handleChange} />
           </label>
           <input type="submit" value="Submit" />
         </form>
