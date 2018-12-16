@@ -4,17 +4,18 @@ A translation management software.
 
 ## Setup
 
-Database process:
-
-```bash
-cockroach start --insecure --listen-addr=localhost
+```sh
+./setup.sh
 ```
 
-HTTP server process:
+See [the Makefile help](./make-help) for helper commands.
 
-```bash
-rails server
-```
+Port usage:
+
+- 26257: database
+- 8080: database monitoring
+- 3000: front-end server
+- 3001: API server
 
 ## Interview of a translator
 

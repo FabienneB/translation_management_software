@@ -1,0 +1,12 @@
+./setup.sh
+  Run initial installation for developers to get up and running.
+make start-db
+  Start the database in the background.
+make start-back
+  Start the back-end server in the background.
+make start-front
+  Start the front-end server in the background.
+make stop
+  Stop the database, back-end and front-end servers.
+make help
+  Show this help.
