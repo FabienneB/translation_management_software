@@ -1,6 +1,10 @@
 class V1::TranslationsController < ApplicationController
   protect_from_forgery with: :null_session
 
+  def index
+    @translations = Translation.all
+  end
+
   def create
     if (translation = Translation.create(translation_params)).valid?
       return render json: { translation: translation }
