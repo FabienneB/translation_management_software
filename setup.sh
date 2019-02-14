@@ -86,11 +86,6 @@ if ! which node >/dev/null; then
   fi
 fi
 
-if ! which yarn >/dev/null; then
-  echo "[install] yarn"
-  npm install -g yarn
-fi
-
 # Set up database
 #
 
@@ -110,7 +105,7 @@ rails server >log/back 2>&1 & echo $! >.pid-back
 #
 
 pushd front
-yarn
+npm install
 npm start >../log/front 2>&1 & echo $! >../.pid-front
 popd
 
