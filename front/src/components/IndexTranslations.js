@@ -5,13 +5,15 @@ function downloadTranslations() {
     .then(result => result.json());
 }
 
-downloadTranslations().then(
-  response => {
-    console.log(response);
-    let translations = response;
-  }
-)
-.catch(console.error)
+// downloadTranslations().then(
+//   response => {
+//     console.log(response);
+//     let translations = response;
+//   }
+// )
+// .catch(console.error)
+
+
 
 class IndexTranslations extends React.Component {
   constructor(props) {
@@ -34,12 +36,22 @@ class IndexTranslations extends React.Component {
       return (
         <ul className="theList">
           {translations.map(translation => (
-            <li> {translation.key} {translation.language}: {translation.value}
+            <li key={translation.id}> {translation.key} {translation.language}: {translation.value}
             </li>
           ))}
         </ul>
       );
     }
+  }
+  componentDidMount(){
+    downloadTranslations()
+    .then(result => {
+      this.setState({
+        isLoaded: true,
+        translations: result.translations
+      });
+    })
+    .catch(console.error)
   }
 }
 
