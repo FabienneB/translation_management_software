@@ -8,10 +8,13 @@ function downloadTranslations() {
 downloadTranslations().then(
   response => {
     console.log(response);
+    console.log('response');
+    console.log(response);
     let translations = response;
+    this.isLoaded = true;
   }
 )
-.catch(console.error)
+.catch(console.error);
 
 class IndexTranslations extends React.Component {
   constructor(props) {
