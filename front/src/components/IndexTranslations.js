@@ -5,16 +5,6 @@ function downloadTranslations() {
     .then(result => result.json());
 }
 
-// downloadTranslations().then(
-//   response => {
-//     console.log(response);
-//     let translations = response;
-//   }
-// )
-// .catch(console.error)
-
-
-
 class IndexTranslations extends React.Component {
   constructor(props) {
     super(props);
