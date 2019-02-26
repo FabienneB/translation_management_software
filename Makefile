@@ -7,14 +7,14 @@ start-back: .setup
 	rails server >log/back 2>&1 & echo $$! >.pid-back
 
 start-front: .setup front/node_modules
-	cd front; npm start >../log/front 2>&1 & echo $$! >.pid-front
+	cd front; npm start >../log/front 2>&1 & echo $$! >../.pid-front
 
 stop: .setup
 	cat .pid-* | xargs kill
 	cockroach quit --insecure
 
 front/node_modules: .setup
-	cd front; yarn
+	cd front; npm install
 
 .setup:
 	./setup.sh
